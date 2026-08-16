@@ -23,7 +23,10 @@ export class UserEntity {
 
     @ManyToOne(
         () => CommunityEntity, 
-        (community) => community.users
+        (community) => community.users,
+        {
+            cascade: true,
+        }
     )
     community!: CommunityEntity;
 
