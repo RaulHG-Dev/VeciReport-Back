@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateCommunityUsecase } from '../../usecase/create-community.usecase';
 import { RegisterCommunityDto } from '../dto/register-community.dto';
-import { ApiBadRequestResponse, ApiInternalServerErrorResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiInternalServerErrorResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Community')
 @Controller('community')
@@ -23,6 +23,9 @@ export class CommunityController {
     })
     @ApiBadRequestResponse({
         description: 'The request is malformed or missing required parameters.',
+    })
+    @ApiCreatedResponse({
+        description: 'The community has been created successfully.',
     })
     async createCommunity(
         @Body() registerCommunityDto: RegisterCommunityDto
