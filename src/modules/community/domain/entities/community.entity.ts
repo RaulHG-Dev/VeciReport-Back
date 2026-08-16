@@ -1,5 +1,5 @@
 import { UserEntity } from 'src/modules/user/domain/entities/user.entity';
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, Index, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, Generated, Index, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 @Entity('communities')
 export class CommunityEntity {
     @PrimaryGeneratedColumn({
@@ -11,14 +11,14 @@ export class CommunityEntity {
         name: 'name',
         length: 200,
     })
-    name!: string;
+    name_community!: string;
 
     @Index('IDX_CODE_COMMUNITY')
     @Column({
         name: 'code_community',
-        length: 500,
         unique: true,
     })
+    @Generated("uuid")
     codeCommunity!: string;
 
     @OneToMany(() => UserEntity, (user) => user.community)

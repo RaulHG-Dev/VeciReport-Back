@@ -1,4 +1,5 @@
 import { CreateCommunityDto } from "../../application/dto/create-community.dto";
+import { RegisterCommunityDto } from "../../application/dto/register-community.dto";
 import { CommunityEntity } from "../entities/community.entity";
 
 export abstract class BaseCommunityInterface {
@@ -8,6 +9,12 @@ export abstract class BaseCommunityInterface {
      * @returns A promise that resolves to the created CommunityEntity.
      */
     abstract create(community: CreateCommunityDto): Promise<CommunityEntity>;
+    /**
+     * Register a new community with user-provided data.
+     * @param community - The community data to register.
+     * @returns A promise that resolves to the registered CommunityEntity.
+     */
+    abstract register(community: RegisterCommunityDto): Promise<CommunityEntity>;
     /**
      * Find a community by its ID.
      * @param id - The ID of the community to find.

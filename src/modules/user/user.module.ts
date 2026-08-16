@@ -15,7 +15,10 @@ import { UserRepository } from './infrastructure/repositories/user.repository';
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
     ],
-    exports: [],
+    exports: [
+        BaseUserInterface,
+        TypeOrmModule.forFeature([UserEntity])
+    ],
 })
 export class UserModule {
 

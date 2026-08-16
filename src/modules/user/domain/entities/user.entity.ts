@@ -13,13 +13,20 @@ export class UserEntity {
         name: 'name',
         length: 200,
     })
-    name!: string;
+    name_user!: string;
 
     @Column({
         name: 'email',
         length: 200,
+        unique: true,
     })
     email!: string;
+
+    @Column({
+        name: 'is_admin',
+        default: false,
+    })
+    isAdmin!: boolean;
 
     @ManyToOne(
         () => CommunityEntity, 

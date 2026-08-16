@@ -3,6 +3,7 @@ import { Repository } from "typeorm";
 import { CreateUserDto } from "../../application/dto/create-user.dto";
 import { UserEntity } from "../../domain/entities/user.entity";
 import { BaseUserInterface } from "../../domain/ports/i-user.interface";
+import { RegisterCommunityDto } from "src/modules/community/application/dto/register-community.dto";
 
 export class UserRepository implements BaseUserInterface {
     constructor(
@@ -47,5 +48,10 @@ export class UserRepository implements BaseUserInterface {
 
     async delete(id: number): Promise<boolean> {
         return (await this.userRepository.softDelete(id)).affected === 1;
+    }
+
+    async registerCommunity(user: RegisterCommunityDto): Promise<UserEntity> {
+        const userEntity = this.userRepository.create(user);
+        return await this.userRepository.save(userEntity);
     }
 }

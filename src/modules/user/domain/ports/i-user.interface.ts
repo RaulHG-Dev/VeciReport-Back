@@ -1,3 +1,4 @@
+import { RegisterCommunityDto } from "src/modules/community/application/dto/register-community.dto";
 import { CreateUserDto } from "../../application/dto/create-user.dto";
 import { UserEntity } from "../entities/user.entity";
 
@@ -32,4 +33,10 @@ export abstract class BaseUserInterface {
      * @returns A promise that resolves to true if the user was deleted, or false if not found.
      */
     abstract delete(id: number): Promise<boolean>;
+    /**
+     * Register a new community for a user.
+     * @param user - The data transfer object containing the community registration data.
+     * @returns A promise that resolves to the created UserEntity with the registered community.
+     */
+    abstract registerCommunity(user: RegisterCommunityDto): Promise<UserEntity>;
 }
