@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { GlobalJwtModule } from './common/global/jwt.module';
 import { AttachModule } from './modules/attach/attach.module';
 import { CatTypeReportModule } from './modules/cat-type-report/cat-type-report.module';
 import { CommunityModule } from './modules/community/community.module';
@@ -16,6 +17,7 @@ import { UserModule } from './modules/user/user.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
+    GlobalJwtModule,
     TypeOrmModule.forRootAsync({
       name: 'default',
       imports: [ConfigModule],

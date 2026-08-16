@@ -16,6 +16,16 @@ export class UserRepository implements BaseUserInterface {
         return await this.userRepository.save(userEntity);
     }
 
+    async findByEmail(email: string): Promise<UserEntity | null> {
+        return await this.userRepository.findOne({
+            where: { email },
+            relations: {
+                community: true,
+                reports: true,
+            }
+        });
+    }
+
     async findOne(id: number): Promise<UserEntity | null> {
         const user = await this.userRepository.findOne({
             loadEagerRelations: false,

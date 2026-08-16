@@ -10,6 +10,12 @@ export abstract class BaseUserInterface {
      */
     abstract create(user: CreateUserDto): Promise<UserEntity>;
     /**
+     * Find a user by email.
+     * @param email - The email of the user to find.
+     * @returns A promise that resolves to the UserEntity if found, or null if not found.
+     */
+    abstract findByEmail(email: string): Promise<UserEntity | null>;
+    /**
      * Find a user by their ID.
      * @param id - The ID of the user to find.
      * @returns A promise that resolves to the UserEntity if found, or null if not found.
