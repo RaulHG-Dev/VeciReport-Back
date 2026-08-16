@@ -16,7 +16,8 @@ export class PasswordMatchConstraint implements ValidatorConstraintInterface {
 export class CreateUserDto {
   @ApiProperty({
     name: 'name_user',
-    description: 'The name of the user'
+    description: 'The name of the user',
+    example: 'Juan Pérez'
   })
   @IsString({ message: 'El nombre del usuario debe ser una cadena de texto' })
   @MaxLength(200, { message: 'El nombre del usuario no debe exceder los 200 caracteres' })
@@ -24,7 +25,8 @@ export class CreateUserDto {
 
   @ApiProperty({
     name: 'email',
-    description: 'The email of the user'
+    description: 'The email of the user',
+    example: 'juan.perez@example.com'
   })
   @IsString({ message: 'El correo electrónico del usuario debe ser una cadena de texto' })
   @IsEmail({}, { message: 'El correo electrónico del usuario debe ser un correo electrónico válido' })
@@ -33,7 +35,8 @@ export class CreateUserDto {
 
   @ApiProperty({
     name: 'password',
-    description: 'The password of the user'
+    description: 'The password of the user',
+    example: 'P@ssw0rd!'
   })
   @IsString({ message: 'La contraseña del usuario debe ser una cadena de texto' })
   @MaxLength(200, { message: 'La contraseña del usuario no debe exceder los 200 caracteres' })
@@ -48,7 +51,8 @@ export class CreateUserDto {
 
   @ApiProperty({
     name: 'confirmPassword',
-    description: 'Confirmation of the password'
+    description: 'Confirmation of the password',
+    example: 'P@ssw0rd!'
   })
   @IsString({ message: 'La confirmación de la contraseña del usuario debe ser una cadena de texto' })
   @MaxLength(200, { message: 'La confirmación de la contraseña del usuario no debe exceder los 200 caracteres' })

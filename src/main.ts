@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('The VeciReport API description')
     .setVersion('1.0.0')
     .addTag('VeciReport')
+    .addBearerAuth()
     .build();
 
   // Create Swagger document and setup Swagger module

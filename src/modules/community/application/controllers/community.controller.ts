@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiInternalServerErrorResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateCommunityUsecase } from '../../usecase/create-community.usecase';
 import { RegisterCommunityDto } from '../dto/register-community.dto';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiInternalServerErrorResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Community')
 @Controller('community')

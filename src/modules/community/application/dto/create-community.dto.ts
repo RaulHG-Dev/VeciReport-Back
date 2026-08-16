@@ -5,7 +5,8 @@ import { IsString, MaxLength } from "class-validator";
 export class CreateCommunityDto {
   @ApiProperty({
     name: 'name_community',
-    description: 'The name of the community'
+    description: 'The name of the community',
+    example: 'Comunidad de Vecinos'
   })
   @IsString({ message: 'El nombre de la comunidad debe ser una cadena de texto' })
   @MaxLength(200, { message: 'El nombre de la comunidad no debe exceder los 200 caracteres' })
@@ -13,7 +14,8 @@ export class CreateCommunityDto {
 
   @ApiProperty({
     name: 'description',
-    description: 'The description of the community'
+    description: 'The description of the community',
+    example: 'Esta es una comunidad de vecinos que busca mejorar la convivencia y la seguridad en el vecindario.'
   })
   description!: string;
 }

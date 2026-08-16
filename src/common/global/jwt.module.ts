@@ -2,6 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { UserModule } from 'src/modules/user/user.module';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { JwtStrategy } from '../auth/jwt.strategy';
 
@@ -19,8 +20,9 @@ import { JwtStrategy } from '../auth/jwt.strategy';
         },
       }),
     }),
+    UserModule,
   ],
   providers: [JwtStrategy, JwtAuthGuard],
-  exports: [JwtModule, JwtAuthGuard, PassportModule],
+  exports: [JwtStrategy, JwtAuthGuard, JwtModule],
 })
 export class GlobalJwtModule {}

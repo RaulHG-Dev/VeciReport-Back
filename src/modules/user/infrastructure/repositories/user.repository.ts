@@ -22,7 +22,19 @@ export class UserRepository implements BaseUserInterface {
             relations: {
                 community: true,
                 reports: true,
-            }
+            },
+            select: {
+                id: true,
+                name_user: true,
+                email: true,
+                isAdmin: true,
+                password: true,
+                community: true,
+                reports: true,
+                createdAt: true,
+                updatedAt: true,
+                deletedAt: true,
+            },
         });
     }
 
@@ -33,7 +45,18 @@ export class UserRepository implements BaseUserInterface {
             relations: {
                 community: true,
                 reports: true,
-            }
+            },
+            select: {
+                id: true,
+                name_user: true,
+                email: true,
+                isAdmin: true,
+                community: true,
+                reports: true,
+                createdAt: true,
+                updatedAt: true,
+                deletedAt: true,
+            },
         });
         return user || null;
     }
@@ -44,7 +67,18 @@ export class UserRepository implements BaseUserInterface {
             relations: {
                 community: true,
                 reports: true,
-            }
+            },
+            select: {
+                id: true,
+                name_user: true,
+                email: true,
+                isAdmin: true,
+                community: true,
+                reports: true,
+                createdAt: true,
+                updatedAt: true,
+                deletedAt: true,
+            },
         });
     }
 
