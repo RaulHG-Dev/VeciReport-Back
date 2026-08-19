@@ -39,7 +39,10 @@ export class ReportEntity {
 
     @ManyToOne(
         () => CatTypeReportEntity,
-        (catTypeReport) => catTypeReport.reports
+        (catTypeReport) => catTypeReport.reports,
+        {
+            cascade: true,
+        }
     )
     catTypeReport!: CatTypeReportEntity;
 

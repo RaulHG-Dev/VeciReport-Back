@@ -132,7 +132,12 @@ Cada módulo de negocio mantiene la misma separación `application`, `domain`, `
 
 ### Imports y estilo
 
+- Antes de agregar o modificar un import, valida la ruta desde la ubicación real del archivo: cuenta correctamente los niveles `../`, confirma que el archivo destino existe y comprueba que el nombre exportado coincide con el símbolo importado.
 - Prefiere imports relativos que respeten la ubicación por capas (`../../domain/...`, `../dto/...`); mantén los imports absolutos existentes solo cuando no sea práctico cambiarlos.
+- Desde `application/controllers`, usa rutas relativas hacia `../../usecase` y `../dto`; desde `usecase`, usa rutas hacia `../domain` y `../application/dto`; desde `infrastructure/repositories`, usa rutas hacia `../../domain` y `../../application/dto`.
+- Conserva los alias absolutos ya configurados, como `src/modules/...`, únicamente cuando estén soportados por `tsconfig.json`; no inventes alias ni mezcles rutas que apunten a otra capa por conveniencia.
+- Verifica mayúsculas, minúsculas, prefijos y sufijos del archivo importado (`i-`, `.entity`, `.repository`, `.usecase`, `.dto`) según la convención existente; no corrijas una ruta cambiando el nombre público de una clase o archivo sin actualizar todos sus imports.
+- Después de mover o crear un archivo, actualiza sus imports y los imports de sus consumidores, y ejecuta el compilador para detectar rutas no resueltas.
 - Conserva el estilo del archivo: el código actual usa sangría de cuatro espacios y mezcla comillas simples y dobles, por lo que no reformatees archivos no relacionados.
 - Usa retornos tipados (`Promise<Entity>`, `Promise<Entity | null>` y `Promise<boolean>`) y evita `Promise<any>` en código nuevo.
 
